@@ -73,9 +73,9 @@ public class UserDaoImpl implements UserDao {
                     new BeanPropertyRowMapper<>(User.class),
                     loginUser.getUsername(), loginUser.getPassword());
         } catch (DataAccessException e) {
+            e.printStackTrace();
             return null;
         }
-
         return user;
     }
 

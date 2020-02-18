@@ -23,11 +23,6 @@
             margin: 2px;
             border: 2px white solid;
         }
-
-        h1 {
-            text-align: center;
-            color: #e0a800;
-        }
     </style>
 </head>
 <body>

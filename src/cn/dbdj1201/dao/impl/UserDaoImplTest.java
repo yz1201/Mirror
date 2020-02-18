@@ -60,8 +60,8 @@ public class UserDaoImplTest {
     @Test
     public void login() {
         User user = new User();
-        user.setUsername("test1");
-        user.setPassword("test1");
+        user.setUsername("test");
+        user.setPassword("test");
         UserDaoImpl dao = new UserDaoImpl();
         System.out.println(dao.login(user));
 

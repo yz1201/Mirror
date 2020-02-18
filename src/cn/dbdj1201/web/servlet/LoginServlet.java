@@ -30,12 +30,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
         User loginUser = new User();
+
         UserService loginService = new UserServiceImpl();
+
         String verificationCode_form = req.getParameter("verification_code");
         String verificationCode = (String) req.getSession().getAttribute("verification_code");
         req.getSession().removeAttribute("verification_code");
-        boolean loginFlag = false;
 
+        boolean loginFlag = false;
         try {
             BeanUtils.populate(loginUser, req.getParameterMap());
         } catch (IllegalAccessException | InvocationTargetException e) {
@@ -43,7 +45,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         System.out.println("loginServlet-beanutils--->" + loginUser);
-
         User user = loginService.login(loginUser);
         System.out.println("loginServlet-->" + user + "--->verificationCode-->" + verificationCode + "-->veri_form-->" + verificationCode_form);
         if (verificationCode != null) {
