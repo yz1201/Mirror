@@ -52,9 +52,10 @@ public class LoginServlet extends HttpServlet {
         }
         req.getSession().removeAttribute("verification_code");
         if (loginFlag) {
+            //login success
             if (user != null) {
                 req.getSession().setAttribute("user", user.getUsername());
-                resp.sendRedirect(req.getContextPath() + "/index.jsp");
+                resp.sendRedirect(req.getContextPath() + "/welcome.jsp");
             } else {
                 req.setAttribute("login_err", "用户名或者密码错误");
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);

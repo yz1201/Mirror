@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 @WebServlet("/findUserByPageServlet")
@@ -35,12 +36,12 @@ public class FindUserByPageServlet extends HttpServlet {
         //获取条件查询参数
         Map<String, String[]> condition = request.getParameterMap();
 
+//        System.out.println("find user servlet ---->" + condition);
+        condition.forEach((key, values) -> System.out.println(key + "--->" + Arrays.toString(values)));
 
         //2.调用service查询
         UserService service = new UserServiceImpl();
         PageBean<User> pb = service.findUserByPage(currentPage, rows, condition);
-
-        System.out.println(pb);
 
         //3.将PageBean存入request
         request.setAttribute("pb", pb);

@@ -51,8 +51,10 @@ public interface UserService {
 
     User login(User loginUser);
 
-   void  delSelectedUser(String[] ids);
+    void delSelectedUser(String[] ids);
 
     PageBean<User> findUserByPage(String _currentPage, String _rows, Map<String, String[]> condition);
+
+    User register(User user);
 
 }

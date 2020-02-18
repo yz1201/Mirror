@@ -59,4 +59,6 @@ public interface UserDao {
      */
     List<User> findByPage(int start, int rows, Map<String, String[]> condition);
 
+    User register(String username);
+
 }

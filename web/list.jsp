@@ -1,4 +1,3 @@
-<%--@elvariable id="condition" type="javax.xml.stream.util.StreamReaderDelegate"--%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -42,16 +41,15 @@
         }
 
         .pre_block, .next_block {
-            width: 120px;
             text-align: center;
         }
 
-        .page_footer, span, .container,.row {
+        .page_footer, span, .container, .row {
             text-align: center;
             width: 100%;
         }
 
-        #form{
+        #form {
             width: 100%;
         }
 
@@ -105,7 +103,7 @@
             <form class="form-inline" action="${pageContext.request.contextPath}/findUserByPageServlet" method="post">
                 <div class="form-group">
                     <label for="exampleInputName2">姓名</label>
-                    <input type="text" name="name" value="${condition.name[0]}" class="form-control t1"
+                    <input type="text" name="username" value="${condition.username[0]}" class="form-control t1"
                            id="exampleInputName2">
                 </div>
                 <div class="form-group">
@@ -241,10 +239,10 @@
 
             <c:forEach begin="1" end="${pb.totalPage}" var="i">
 
-
                 <c:if test="${pb.currentPage == i}">
-                    <li class="page-item active"><a class="page-link"
-                                                    href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=10&name=${condition.name[0]}&address=${condition.address[0]}&email=${condition.email[0]}">${i}</a>
+                    <li class="page-item active">
+                        <a class="page-link"
+                           href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${i}&rows=10&name=${condition.name[0]}&address=${condition.address[0]}&email=${condition.email[0]}">${i}</a>
                     </li>
                 </c:if>
                 <c:if test="${pb.currentPage != i}">
@@ -256,12 +254,17 @@
 
             </c:forEach>
 
-
+            <c:if test="${pb.currentPage >= pb.totalPage}">
+            <li class="page-item disabled">
+                </c:if>
+                <c:if test="${pb.currentPage < pb.totalPage}">
             <li class="page-item next_block">
+                </c:if>
+
                 <a class="page-link"
                    href="${pageContext.request.contextPath}/findUserByPageServlet?currentPage=${pb.currentPage + 1}&rows=10&name=${condition.name[0]}&address=${condition.address[0]}&email=${condition.email[0]}"
                    aria-label="Next">
-                    <span aria-hidden="true" style="color: blue" class="next_block">Next</span>
+                    <span aria-hidden="true" style="color: blue" class="next_block">&nbsp;&nbsp;Next&nbsp;&nbsp;</span>
                 </a>
             </li>
         </ul>

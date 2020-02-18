@@ -73,7 +73,7 @@
 <body class="bg-success">
 <div class="container">
     <h1><span>REGISTER</span></h1>
-    <form method="post" action="${pageContext.request.contextPath}/login">
+    <form method="post" action="${pageContext.request.contextPath}/register">
         <div class="card">
             <div class="card-body bg-success">
                 <div class="form-group">

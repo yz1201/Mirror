@@ -125,7 +125,7 @@ public class UserDaoImpl implements UserDao {
         //2.遍历map
         Set<String> keySet = condition.keySet();
         //定义参数的集合
-        List<Object> params = new ArrayList<Object>();
+        List<Object> params = new ArrayList<>();
         for (String key : keySet) {
 
             //排除分页条件参数
@@ -138,7 +138,7 @@ public class UserDaoImpl implements UserDao {
             //判断value是否有值
             if (value != null && !"".equals(value)) {
                 //有值
-                sb.append(" and " + key + " like ? ");
+                sb.append(" and ").append(key).append(" like ? ");
                 params.add("%" + value + "%");//？条件的值
             }
         }
@@ -155,5 +155,17 @@ public class UserDaoImpl implements UserDao {
         return template.query(sql, new BeanPropertyRowMapper<>(User.class), params.toArray());
     }
 
+    @Override
+    public User register(String username) {
+        User user;
+        try {
+            user = template.queryForObject("select * from user where username = ?",
+                    new BeanPropertyRowMapper<>(User.class),
+                    username);
+        } catch (DataAccessException e) {
+            return null;
+        }
 
+        return user;
+    }
 }

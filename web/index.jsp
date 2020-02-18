@@ -24,7 +24,7 @@
 <body class="bg-warning">
 <div class="container">
     <div class="card-body">
-        <a href="${pageContext.request.contextPath}/findUserByPageServlet"><h1 class="h1">USER INFO</h1></a>
+<%--        <a href="${pageContext.request.contextPath}/findUserByPageServlet"><h1 class="h1">USER INFO</h1></a>--%>
         <a href="${pageContext.request.contextPath}/login.jsp"><h1 class="h1">Login</h1></a>
         <a href="${pageContext.request.contextPath}/register.jsp"><h1 class="h1">Register</h1></a>
     </div>
